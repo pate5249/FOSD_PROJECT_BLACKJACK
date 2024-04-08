@@ -1,14 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package cardgame;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 /**
  *
- * @author dvptl
+ * @author Dev Patel
  */
 public class Deck {
   private List<Card> cards;
@@ -21,9 +18,9 @@ public class Deck {
 
     // Method to initialize the deck with all cards
     private void initializeDeck() {
-        for (Card.Suit suit : Card.Suit.values()) {
+        for (Card.Suit suits : Card.Suit.values()) {
             for (Card.Value value : Card.Value.values()) {
-                cards.add(new Card(value, suit));
+                cards.add(new Card(value, suits));
             }
         }
     }

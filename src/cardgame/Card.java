@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package cardgame;
 
 /**
  *
- * @author dvptl
+ * @author DvPtl
  */
 class Card {
  public enum Suit {
@@ -14,29 +11,29 @@ class Card {
     }
 
     public enum Value {
-        ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
+        ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACKs, QUEENs, KINGs
     }
 
-    private final Suit suit;
+    private final Suit suits;
     private final Value value;
 
-    public Card(Value value, Suit suit) {
+    public Card(Value value, Suit suits) {
         this.value = value;
-        this.suit = suit;
+        this.suits = suits;
     }
 
-    public Suit getSuit() {
-        return suit;
+    public Suit getSuits() {
+        return suits;
     }
 
-    public Value getValue() {
+    public Value getValus() {
         return value;
     }
 
-    public int getNumericValue() {
+    public int getNumericValues() {
         switch (value) {
             case ACE:
-                return 11; // Return 11 for now, as it's usually optimal
+                return 1; 
             case TWO:
                 return 2;
             case THREE:
@@ -54,7 +51,7 @@ class Card {
             case NINE:
                 return 9;
             default:
-                return 10; // For Jack, Queen, King
+                return 10; // For Jacks, Queens, Kings
         }
     }
 }

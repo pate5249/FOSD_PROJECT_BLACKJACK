@@ -1,56 +1,53 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package cardgame;
 
-import java.util.Scanner;
+
 /**
  *
- * @author dvptl
+ * @author DvPtl
  */
 public class Player {
-    private Card[] hand;
-    private int numCards;
+    private Card[] hands;
+    private int numsOfCards;
 
-    // Constructor for Player
+    // Constructor for the Player
     public Player() {
-        hand = new Card[10]; // Maximum 10 cards per hand
-        numCards = 0;
+        hands = new Card[10]; // Maximum 10 cards per hands
+        numsOfCards = 0;
     }
 
-    // Method to add a card to the player's hand
-    public void addCardToHand(Card card) {
-        if (numCards < hand.length) {
-            hand[numCards] = card;
-            numCards++;
+    // this is method to add  card to the player's hands
+    public void addCardTohands(Card card) {
+        if (numsOfCards < hands.length) {
+            hands[numsOfCards] = card;
+            numsOfCards++;
         } else {
             System.out.println("Cannot add more cards to hand.");
         }
     }
 
-    // Method to calculate the value of the player's hand
+    // this method to calculate value of the player's hand
     public int getHandValue() {
         int value = 0;
         int numAces = 0;
 
-        for (int i = 0; i < numCards; i++) {
-            if (hand[i].getValue() == Card.Value.ACE) {
+        for (int i = 0; i < numsOfCards; i++) {
+            if (hands[i].getValus() == Card.Value.ACE) {
                 numAces++;
             }
-            value += hand[i].getNumericValue();
+            value += hands[i].getNumericValues();
         }
 
         while (value > 21 && numAces > 0) {
-            value -= 10; // Convert Ace from 11 to 1
+            value -= 10; // Convert into Ace from 11 to 1
             numAces--;
         }
 
         return value;
     }
 
-    // Method to get the number of cards in the player's hand
+    // this method to get the numbers of cards in the player's hand
     public int getNumberOfCards() {
-        return numCards;
+        return numsOfCards;
     }
 }

@@ -1,12 +1,11 @@
 package cardgame;
 /**
- * Completed code for Week 4 cohesion/coupling lesson
- * 2023
+ * Author:DvPtl
  */
 import java.util.Random;
 
 public class CardHandGenerator {
-    public static Card[] generateHand(int numCards) {
+    public static Card[] generateHands(int numCards) {
         Card[] hand = new Card[numCards];
         Random random = new Random();
 
@@ -15,9 +14,9 @@ public class CardHandGenerator {
             Card.Value value = Card.Value.values()[random.nextInt(numValues)];
 
             int numSuits = Card.Suit.values().length;
-            Card.Suit suit = Card.Suit.values()[random.nextInt(numSuits)];
+            Card.Suit suits = Card.Suit.values()[random.nextInt(numSuits)];
 
-            Card card = new Card(value, suit);
+            Card card = new Card(value, suits);
             hand[i] = card;
         }
         return hand;
