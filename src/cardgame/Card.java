@@ -26,7 +26,7 @@ class Card {
         return suits;
     }
 
-    public Value getValus() {
+    public Value getValue() {
         return value;
     }
 

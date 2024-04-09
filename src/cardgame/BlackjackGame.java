@@ -42,18 +42,29 @@ public class BlackjackGame {
         dealer.addCardTohands(deck.drawCard());
 
         // Display initial hands
-        System.out.println("Player's Hands: " + player.getHandValue());
-        System.out.println("Dealer's Hands: " + dealer.getHandValue());
+        System.out.println(playerName + "'s Hand: ");
+        System.out.println(player.getHand());
+        System.out.println("Total: " + player.getHandValue()); // Display total of player's hand
+        System.out.println("Dealer's Hand: ");
+        System.out.println(dealer.getHand());
+        System.out.println("Total: " + dealer.getHandValue()); // Display total of dealer's hand
 
         // Player's turn
         if (!GameLogic.isPlayerDone(player)) {
             playerAction();
         }
 
+        // Display dealer's hand if player stood
+        System.out.println("Dealer's Hands: ");
+        System.out.println(dealer.getHand());
+        System.out.println("Total: " + dealer.getHandValue()); // Display total of dealer's hand
+
         // Dealer's turn
         while (!GameLogic.isDealersDone(dealer) && !GameLogic.isBust(dealer)) {
             dealer.addCardTohands(deck.drawCard());
-            System.out.println("Dealer's Hands: " + dealer.getHandValue());
+            System.out.println("Dealer's Hands: ");
+            System.out.println(dealer.getHand());
+            System.out.println("Total: " + dealer.getHandValue()); // Display total of dealer's hand
         }
 
         // Determine winner
@@ -62,16 +73,24 @@ public class BlackjackGame {
 
     // Method to prompt player for action (hit or stand)
     private void playerAction() {
-        System.out.println("Do you want to take hit or stand? (h/s)");
-        String choice = scanner.nextLine();
-        if (choice.equalsIgnoreCase("h")) {
-            player.addCardTohands(deck.drawCard());
-            System.out.println("Player's Hand after hitting: " + player.getHandValue());
-            if (GameLogic.isBust(player)) {
-                System.out.println("Player busts! Dealer wins.");
-                System.exit(0); // Exit game
-            } else if (!GameLogic.isPlayerDone(player)) {
-                playerAction(); // Prompt to the player for action again if they choose to hit
+        while (true) {
+            System.out.println("Do you want to take hit or stand? (h/s)");
+            String choice = scanner.nextLine();
+            if (choice.equalsIgnoreCase("h")) {
+                player.addCardTohands(deck.drawCard());
+                System.out.println("Player's Hand after hitting: ");
+                System.out.println(player.getHand());
+                System.out.println("Total: " + player.getHandValue()); // Display total of player's hand
+                if (GameLogic.isBust(player)) {
+                    System.out.println("Player busts! Dealer wins.");
+                    System.exit(0); // Exit game
+                } else if (GameLogic.isPlayerDone(player)) {
+                    break; // Player stands, exit loop
+                }
+            } else if (choice.equalsIgnoreCase("s")) {
+                break; // Player stands, exit loop
+            } else {
+                System.out.println("Invalid input. Please enter 'h' for hit or 's' for stand.");
             }
         }
     }

@@ -1,6 +1,8 @@
 
 package cardgame;
 
+import java.util.Arrays;
+
 
 /**
  *
@@ -16,7 +18,7 @@ public class Player {
         numsOfCards = 0;
     }
 
-    // this is method to add  card to the player's hands
+    // Method to add a card to the player's hands
     public void addCardTohands(Card card) {
         if (numsOfCards < hands.length) {
             hands[numsOfCards] = card;
@@ -26,13 +28,13 @@ public class Player {
         }
     }
 
-    // this method to calculate value of the player's hand
+    // Method to calculate the value of the player's hand
     public int getHandValue() {
         int value = 0;
         int numAces = 0;
 
         for (int i = 0; i < numsOfCards; i++) {
-            if (hands[i].getValus() == Card.Value.ACE) {
+            if (hands[i].getValue() == Card.Value.ACE) {
                 numAces++;
             }
             value += hands[i].getNumericValues();
@@ -46,8 +48,17 @@ public class Player {
         return value;
     }
 
-    // this method to get the numbers of cards in the player's hand
+    // Method to get the number of cards in the player's hand
     public int getNumberOfCards() {
         return numsOfCards;
+    }
+
+    // Method to get the array of cards in the player's hand
+    public String getHand() {
+        StringBuilder handString = new StringBuilder();
+        for (int i = 0; i < numsOfCards; i++) {
+            handString.append(hands[i].getValue()).append(" of ").append(hands[i].getSuits()).append("\n");
+        }
+        return handString.toString();
     }
 }
